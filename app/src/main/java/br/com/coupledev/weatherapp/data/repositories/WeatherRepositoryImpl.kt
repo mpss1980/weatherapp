@@ -15,8 +15,9 @@ class WeatherRepositoryImpl @Inject constructor(
     @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getWeatherData(lat: Double, long: Double): Resource<WeatherInfo> {
         return try {
+            val response = api.getWeatherData(lat = lat, long = long)
             Resource.Success(
-                data = api.getWeatherData(lat = lat, long = long).toWeatherInfo()
+                data = response.toWeatherInfo()
             )
         } catch (e: Exception) {
             e.printStackTrace()

@@ -1,5 +1,6 @@
 package br.com.coupledev.weatherapp.di
 
+import br.com.coupledev.weatherapp.data.repositories.WeatherRepositoryImpl
 import br.com.coupledev.weatherapp.domain.repositories.WeatherRepository
 import dagger.Binds
 import dagger.Module
@@ -13,5 +14,5 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindWeatherRepository(weatherRepository: WeatherRepository): WeatherRepository
+    abstract fun bindWeatherRepository(weatherRepository: WeatherRepositoryImpl): WeatherRepository
 }
