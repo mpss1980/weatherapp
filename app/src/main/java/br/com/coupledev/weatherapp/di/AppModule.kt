@@ -1,6 +1,9 @@
 package br.com.coupledev.weatherapp.di
 
+import android.app.Application
 import br.com.coupledev.weatherapp.data.remote.WeatherApi
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,5 +27,9 @@ object AppModule {
             .create()
     }
 
-    //todo: parei no 52:02
+    @Provides
+    @Singleton
+    fun providesFusedLocationProviderClient(app: Application): FusedLocationProviderClient {
+        return LocationServices.getFusedLocationProviderClient(app)
+    }
 }
